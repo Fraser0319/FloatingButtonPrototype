@@ -1,4 +1,4 @@
-package com.example.fraser.floatingbuttonprototype;
+package com.example.fraser.floatingbuttonprototype.Activities;
 
 import android.Manifest;
 import android.app.Activity;
@@ -8,11 +8,19 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import com.example.fraser.floatingbuttonprototype.Adapters.CustomPagerAdapter;
+import com.example.fraser.floatingbuttonprototype.Fragments.ListIconsFragment;
+import com.example.fraser.floatingbuttonprototype.Fragments.SummaryFragment;
+import com.example.fraser.floatingbuttonprototype.HeadService;
+import com.example.fraser.floatingbuttonprototype.PermissionChecker;
+import com.example.fraser.floatingbuttonprototype.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private PermissionChecker mPermissionChecker;
+    private ViewPager viewPager;
+    private CustomPagerAdapter cpa;
 
     @Override
     protected void onDestroy() {
@@ -39,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         verifyStoragePermissions(this);
-        // setUpTabs();
+        setUpTabs();
         if (getIntent().getExtras() != null) {
             serviceState = getIntent().getExtras().getBoolean("state");
         }
@@ -105,11 +115,19 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
-        //viewPager = (ViewPager) findViewById(R.id.viewpager);
-        //setUpPager(viewPager);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        setUpPager(viewPager);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
-        //tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setupWithViewPager(viewPager);
+    }
+
+    private void setUpPager(ViewPager viewPager) {
+        CustomPagerAdapter cpa = new CustomPagerAdapter(getSupportFragmentManager());
+        cpa.addFragment(new SummaryFragment(), "Summary");
+        //cpa.addFragment(new ListDBFragment(), "ImageDB");
+        cpa.addFragment(new ListIconsFragment(), "Icons");
+        viewPager.setAdapter(cpa);
     }
 
     //persmission method.

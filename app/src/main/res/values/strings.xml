@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">FloatingButtonPrototype</string>
     <string name="serviceEnabledKey">serviceEnabledKey</string>
     <string name="title">Head service enabled</string>
     <string name="summary">It allows to enable or disable the head service.</string>
@@ -7,4 +6,30 @@
     <!-- Notification -->
     <string name="notificationTitle">Head service</string>
     <string name="notificationText">Tap to configure.</string>
+
+
+    <string name="app_name">Authentication Diary</string>
+    <string name="EndNotification">End Notification</string>
+    <string name="StartNotification">Start Notification</string>
+    <string name="Summary">Summary</string>
+    <string name="confirm">Confirm</string>
+    <string name="postiveButtonAdd">Add</string>
+    <string name="negativeButtonCancel">Cancel</string>
+    <string name="addCommentHint">Enter Your Comment</string>
+    <string name="addComment">Add Comment</string>
+    <string name="cancel">Cancel</string>
+    <string name="sendData">Send CSV</string>
+
+    <!--place holder hints for location and comments in detailed view fragment-->
+    <string name="locationHint">Enter Location</string>
+    <string name="commentHint">Add Comments</string>
+    <string name="send">Send</string>
+
+    <string-array name="LocationArray">
+        <item>Work</item>
+        <item>Train</item>
+        <item>Home</item>
+        <item>University</item>
+    </string-array>
+
 </resources>

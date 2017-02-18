@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.widget.Toast;
 
+import com.example.fraser.floatingbuttonprototype.Activities.MainActivity;
+
 /**
  * Created by Fraser on 01/12/2016.
  */

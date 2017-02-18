@@ -13,7 +13,7 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/MyTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,6 +24,12 @@
         <service
             android:name=".HeadService"
             android:exported="false" />
+
+        <activity android:name=".FloatingActivity"
+            android:label=""
+            android:theme="@style/Theme.AppCompat.Light.Dialog">
+
+        </activity>
 
     </application>
 </manifest>
