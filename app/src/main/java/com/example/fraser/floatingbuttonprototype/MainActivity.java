@@ -10,7 +10,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -40,8 +39,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         verifyStoragePermissions(this);
-       // setUpTabs();
-
+        // setUpTabs();
         if (getIntent().getExtras() != null) {
             serviceState = getIntent().getExtras().getBoolean("state");
         }
@@ -49,9 +47,9 @@ public class MainActivity extends AppCompatActivity {
         getServiceState();
     }
 
-    public void checkPermissions(){
+    public void checkPermissions() {
         mPermissionChecker = new PermissionChecker(this);
-        if(!mPermissionChecker.isRequiredPermissionGranted()){
+        if (!mPermissionChecker.isRequiredPermissionGranted()) {
             Intent intent = mPermissionChecker.createRequiredPermissionIntent();
             startActivityForResult(intent, PermissionChecker.REQUIRED_PERMISSION_REQUEST_CODE);
         }
@@ -59,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean getServiceState() {
         SharedPreferences sharedPrefs = getSharedPreferences("com.example.fraser.floatingbuttonprototype", MODE_PRIVATE);
-        Log.e("service_state", serviceState + "");
+
         startNotification = (ImageButton) findViewById(R.id.start_notification);
         endNotification = (ImageButton) findViewById(R.id.end_notification);
         if (sharedPrefs.getBoolean("service_status", serviceState)) {
@@ -77,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void startService(View v){
+    public void startService(View v) {
         serviceState = true;
         SharedPreferences.Editor editor = getSharedPreferences("com.example.fraser.floatingbuttonprototype", MODE_PRIVATE).edit();
         editor.putBoolean("service_status", serviceState);
@@ -88,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         startService(service);
     }
 
-    public void stopService(View v){
+    public void stopService(View v) {
         serviceState = false;
         SharedPreferences.Editor editor = getSharedPreferences("com.example.fraser.floatingbuttonprototype", MODE_PRIVATE).edit();
         editor.putBoolean("service_status", serviceState);
@@ -105,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-       getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         //viewPager = (ViewPager) findViewById(R.id.viewpager);
         //setUpPager(viewPager);

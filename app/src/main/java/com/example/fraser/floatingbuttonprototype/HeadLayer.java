@@ -56,28 +56,7 @@ public class HeadLayer extends View {
         //final ImageView imageView = (ImageView) mFrameLayout.findViewById(R.id.imageView);
         // add a click listener to the image view
         final ImageView imageView = (ImageView) mFrameLayout.findViewById(R.id.imageView);
-//        imageView.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.e("here", "icon click");
-//                if(!openClose){
-//                    Intent intent = new Intent(getContext(), testActivity.class);
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK); // clears activity to open the new small activity
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    getContext().startActivity(intent);
-//                    openClose = true;
-//                }else{
-//                    Intent intent = new Intent(getContext(), MainActivity.class);
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK); // clears activity to open the main activity
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    getContext().startActivity(intent);
-//                    openClose = false;
-//                }
-//            }
-//        });
-
-
-
+        
         // Support dragging the image view
         imageView.setOnTouchListener(new OnTouchListener() {
             private static final int MAX_CLICK_DURATION = 200;
@@ -93,7 +72,7 @@ public class HeadLayer extends View {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN: {
                         startClickTime = System.currentTimeMillis();
-                        Log.e("Down","touch");
+                        Log.e("Down", "touch");
                         //shouldClick = false;
                         initX = params.x;
                         initY = params.y;
@@ -114,16 +93,16 @@ public class HeadLayer extends View {
                     case MotionEvent.ACTION_UP: {
                         long clickDuration = System.currentTimeMillis() - startClickTime;
 
-                        if(clickDuration < MAX_CLICK_DURATION) {
+                        if (clickDuration < MAX_CLICK_DURATION) {
                             //click event has occurred
 
-                            if(!openClose){
+                            if (!openClose) {
                                 Intent intent = new Intent(getContext(), testActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK); // clears activity to open the new small activity
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 getContext().startActivity(intent);
                                 openClose = true;
-                            }else{
+                            } else {
 //                                Intent intent = new Intent(getContext(),MainActivity.class);
 //                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK); // clears activity to open the main activity
 //                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -138,6 +117,7 @@ public class HeadLayer extends View {
             }
         });
     }
+
     /**
      * Removes the view from window manager.
      */
