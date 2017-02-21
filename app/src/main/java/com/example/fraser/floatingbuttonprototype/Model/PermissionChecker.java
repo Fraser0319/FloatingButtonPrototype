@@ -1,4 +1,4 @@
-package com.example.fraser.floatingbuttonprototype;
+package com.example.fraser.floatingbuttonprototype.Model;
 
 import android.annotation.TargetApi;
 import android.content.Context;

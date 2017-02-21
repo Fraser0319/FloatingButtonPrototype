@@ -62,6 +62,7 @@ public class SummaryFragment extends Fragment {
         authenList = (ListView) viewInflator.findViewById(R.id.authenList);
         authenList.setAdapter(listAdapter);
     }
+
     public void generateList(View v) {
 
         try {

@@ -22,10 +22,10 @@
         </activity>
 
         <service
-            android:name=".HeadService"
+            android:name=".Model.HeadService"
             android:exported="false" />
 
-        <activity android:name=".FloatingActivity"
+        <activity android:name=".Activities.FloatingActivity"
             android:label=""
             android:theme="@style/Theme.AppCompat.Light.Dialog">
 

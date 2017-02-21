@@ -1,4 +1,4 @@
-package com.example.fraser.floatingbuttonprototype;
+package com.example.fraser.floatingbuttonprototype.Activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+
+import com.example.fraser.floatingbuttonprototype.R;
 
 /**
  * Created by Fraser on 01/12/2016.

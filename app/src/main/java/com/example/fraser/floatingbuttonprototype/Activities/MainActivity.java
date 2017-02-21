@@ -18,8 +18,8 @@ import android.widget.Toast;
 import com.example.fraser.floatingbuttonprototype.Adapters.CustomPagerAdapter;
 import com.example.fraser.floatingbuttonprototype.Fragments.ListIconsFragment;
 import com.example.fraser.floatingbuttonprototype.Fragments.SummaryFragment;
-import com.example.fraser.floatingbuttonprototype.HeadService;
-import com.example.fraser.floatingbuttonprototype.PermissionChecker;
+import com.example.fraser.floatingbuttonprototype.Model.HeadService;
+import com.example.fraser.floatingbuttonprototype.Model.PermissionChecker;
 import com.example.fraser.floatingbuttonprototype.R;
 
 public class MainActivity extends AppCompatActivity {

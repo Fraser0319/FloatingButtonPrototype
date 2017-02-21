@@ -1,4 +1,4 @@
-package com.example.fraser.floatingbuttonprototype;
+package com.example.fraser.floatingbuttonprototype.Model;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -8,6 +8,8 @@ import android.os.IBinder;
 import android.widget.Toast;
 
 import com.example.fraser.floatingbuttonprototype.Activities.MainActivity;
+import com.example.fraser.floatingbuttonprototype.Activities.HeadLayer;
+import com.example.fraser.floatingbuttonprototype.R;
 
 /**
  * Created by Fraser on 01/12/2016.
