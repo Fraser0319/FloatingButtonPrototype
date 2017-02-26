@@ -99,7 +99,6 @@ public class FloatingActivity extends AppCompatActivity {
                 //use id to get the image name,id etc from the db as its the _id of that image in the image_names table.
                 targetList.setSelection(position);
                 targetImageId = dbHelper.getImageResourceID(db, id);
-                Log.e("targetImageId",targetImageId+"");
             }
         });
 
@@ -108,7 +107,6 @@ public class FloatingActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 authenticatorList.setSelection(position);
                 authenImageId = dbHelper.getImageResourceID(db, id);
-                Log.e("authenImageId",authenImageId+"");
             }
         });
 
@@ -116,9 +114,7 @@ public class FloatingActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 emotionList.setSelection(position);
-                emotionList.setSelected(true);
                 emotionImageId = dbHelper.getImageResourceID(db, id);
-                Log.e("emotionImageId",emotionImageId+"");
             }
         });
     }
@@ -133,13 +129,16 @@ public class FloatingActivity extends AppCompatActivity {
         String comments = commentsText.getText().toString();
 
         if (targetImageId != -1 && authenImageId != -1 && emotionImageId != -1) {
-            dbHelper.insertAuthentication(db, targetImageId, authenImageId, emotionImageId, comments,location);
+            dbHelper.insertAuthentication(db, targetImageId, authenImageId, emotionImageId, comments, location);
             Toast.makeText(this, "Authentication Added !", Toast.LENGTH_SHORT).show();
             locationText.setText("");
             commentsText.setText("");
-            emotionList.setSelected(false);
-            authenticatorList.setSelected(false);
-            targetList.setSelected(false);
+            emotionList.setAdapter(new CustomImageListAdapter(this, emotionCursor));
+            authenticatorList.setAdapter(new CustomImageListAdapter(this, authenticatorCursor));
+            targetList.setAdapter(new CustomImageListAdapter(this, targetCursor));
+            targetImageId = -1;
+            authenImageId = -1;
+            emotionImageId = -1;
         } else {
             Toast.makeText(this, "Please set a Target, Authenticator and Emotion", Toast.LENGTH_SHORT).show();
         }

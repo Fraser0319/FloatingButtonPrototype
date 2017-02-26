@@ -52,7 +52,7 @@ public class ListDBFragment extends Fragment {
     public void setUpDB(View view) {
         imageDb = new DatabaseHelper(getActivity());
         db = imageDb.getReadableDatabase();
-        String getIcons = "SELECT * FROM CUSTOM_ENTRIES ORDER BY _ID DESC";
+        String getIcons = "SELECT _id, IMAGE_ID, NAME, CATEGORY FROM IMAGE_NAMES WHERE CATEGORY = " + "'Target'"  + " ORDER BY _ID DESC";
         cursor = db.rawQuery(getIcons, null);
         listDBAdapter = new ListDBAdapter(getActivity(),cursor);
         imageList = (ListView) view.findViewById(R.id.imageTableListView);

@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.fraser.floatingbuttonprototype.Adapters.CustomPagerAdapter;
+import com.example.fraser.floatingbuttonprototype.Fragments.ListDBFragment;
 import com.example.fraser.floatingbuttonprototype.Fragments.ListIconsFragment;
 import com.example.fraser.floatingbuttonprototype.Fragments.SummaryFragment;
 import com.example.fraser.floatingbuttonprototype.Model.HeadService;
@@ -125,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
     private void setUpPager(ViewPager viewPager) {
         CustomPagerAdapter cpa = new CustomPagerAdapter(getSupportFragmentManager());
         cpa.addFragment(new SummaryFragment(), "Summary");
-        //cpa.addFragment(new ListDBFragment(), "ImageDB");
+        cpa.addFragment(new ListDBFragment(), "ImageDB");
         cpa.addFragment(new ListIconsFragment(), "Icons");
         viewPager.setAdapter(cpa);
     }

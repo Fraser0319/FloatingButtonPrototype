@@ -1,8 +1,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.fraser.notaficationprototype.Fragments.SendDataFragment"
+    tools:context="com.example.fraser.floatingbuttonprototype.Fragments.SendDataFragment"
     android:id="@+id/sendDataFrag">
 
     <LinearLayout
@@ -43,6 +44,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/send"
             android:layout_centerVertical="true"
+            app:backgroundTint="@color/colorPrimary"
             android:layout_centerHorizontal="true" />
 
     </LinearLayout>

@@ -48,10 +48,12 @@ public class ImageViewCursorAdapter extends CursorAdapter {
         String name = cursor.getString(cursor.getColumnIndex("NAME"));
         String category = cursor.getString(cursor.getColumnIndex("CATEGORY"));
 
+
         if(!category.equals("Header")){
             iconImage.setVisibility(View.VISIBLE);
             iconImage.setImageResource(icon);
             iconName.setText(name);
+            iconName.setTextSize(20);
             iconName.setPadding(80,0,0,0);
         } else {
             iconName.setTextSize(24);
