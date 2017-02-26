@@ -2,7 +2,6 @@ package com.example.fraser.floatingbuttonprototype.Adapters;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +31,7 @@ public class CustomImageListAdapter extends CursorAdapter {
 
         ImageView iconImage = (ImageView) view.findViewById(R.id.imageViewFloatingActivity);
         int icon = cursor.getInt(cursor.getColumnIndex("IMAGE_ID"));
-        String name = cursor.getString(cursor.getColumnIndex("NAME"));
+//        String name = cursor.getString(cursor.getColumnIndex("NAME"));
 
         iconImage.setImageResource(icon);
 

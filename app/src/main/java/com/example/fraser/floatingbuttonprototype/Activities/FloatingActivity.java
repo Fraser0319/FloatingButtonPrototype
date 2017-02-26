@@ -76,10 +76,12 @@ public class FloatingActivity extends AppCompatActivity {
         db = authenticationDatabase.getReadableDatabase();
         dbHelper = new DatabaseHelper(this);
 
-        String getImageIDFromCategory = "SELECT * FROM IMAGE_NAMES WHERE CATEGORY = ";
-        targetCursor = db.rawQuery(getImageIDFromCategory + "'Target'", null);
-        authenticatorCursor = db.rawQuery(getImageIDFromCategory + "'Authenticator'", null);
-        emotionCursor = db.rawQuery(getImageIDFromCategory + "'Emotion'", null);
+        String getImageIDFromCategoryTar = "SELECT _id, image_id, category FROM IMAGE_NAMES WHERE CATEGORY = " + "'Other'" + " OR " + "CATEGORY = " + "'Target'" + " and image_id in (select image_id from image_names where image_id != " + R.drawable.question_mark + ")";
+        String getImageIDFromCategoryAut = "SELECT _id, image_id, category FROM IMAGE_NAMES WHERE CATEGORY = " + "'Other'" + " OR " + "CATEGORY = " + "'Authenticator'" + " and image_id in (select image_id from image_names where image_id != " + R.drawable.question_mark + ")";
+        String getImageIDFromCategoryEmo = "SELECT _id, image_id, category FROM IMAGE_NAMES WHERE CATEGORY = " + "'Other'" + " OR " + "CATEGORY = " + "'Emotion'" + " and image_id in (select image_id from image_names where image_id != " + R.drawable.question_mark + ")";
+        targetCursor = db.rawQuery(getImageIDFromCategoryTar, null);
+        authenticatorCursor = db.rawQuery(getImageIDFromCategoryAut, null);
+        emotionCursor = db.rawQuery(getImageIDFromCategoryEmo, null);
 
         targetList = (ListView) findViewById(R.id.targetListViewFloatingActivity);
         authenticatorList = (ListView) findViewById(R.id.authenListViewFloatingActivity);
