@@ -120,7 +120,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return id;
     }
 
-    protected static void insertAuthentication(SQLiteDatabase db, int deviceID, int authenID, int emotionID, String comments, String location) {
+    public static void insertAuthentication(SQLiteDatabase db, int deviceID, int authenID, int emotionID, String comments, String location) {
 
         ContentValues authenticationValues = new ContentValues();
         authenticationValues.put(DEVICE, deviceID);
@@ -131,13 +131,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.insert(TABLE_NAME, null, authenticationValues);
     }
 
-    public void insertOtherEntry(SQLiteDatabase db, String name, String category, long authenID ){
+    public void insertOtherEntry(SQLiteDatabase db, String name, String category, long authenID) {
         ContentValues imageValues = new ContentValues();
         imageValues.put("NAME", name);
         imageValues.put("CATEGORY", category);
         imageValues.put("AUTHEN_ID", authenID);
-        db.insertWithOnConflict("CUSTOM_ENTRIES", null, imageValues,SQLiteDatabase.CONFLICT_REPLACE);
-       // db.insert("CUSTOM_ENTRIES", null, imageValues);
+        db.insertWithOnConflict("CUSTOM_ENTRIES", null, imageValues, SQLiteDatabase.CONFLICT_REPLACE);
+        // db.insert("CUSTOM_ENTRIES", null, imageValues);
     }
 
     public void insertImageNames(SQLiteDatabase db, int imageId, String name, String category) {
@@ -195,7 +195,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public List<String> getLocations(SQLiteDatabase db) {
         List<String> locations = new ArrayList<>();
-        Collections.addAll(locations, "","Other", "Home", "Work", "Shop", "Travel");
+        Collections.addAll(locations, "", "Other", "Home", "Work", "Shop", "Travel");
         String getLocations = "SELECT DISTINCT LOCATION FROM AUTHENTICATION WHERE LOCATION NOT NULL";
         Cursor c = db.rawQuery(getLocations, null);
 
@@ -226,6 +226,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         int imageID = 0;
         String getImageNameQuery = "SELECT DISTINCT IMAGE_ID FROM IMAGE_NAMES WHERE NAME = ?";
         Cursor c = db.rawQuery(getImageNameQuery, new String[]{name});
+        if (c.moveToFirst()) {
+            imageID = c.getInt(c.getColumnIndex("IMAGE_ID"));
+        }
+        c.close();
+        return imageID;
+    }
+
+    public int getImageResourceID(SQLiteDatabase db, long id) {
+        int imageID = 0;
+        String getImageNameQuery = "SELECT DISTINCT IMAGE_ID FROM IMAGE_NAMES WHERE _id = " + id;
+        Cursor c = db.rawQuery(getImageNameQuery, null);
         if (c.moveToFirst()) {
             imageID = c.getInt(c.getColumnIndex("IMAGE_ID"));
         }
@@ -281,9 +292,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put("NAME", name);
         String where = "AUTHEN_ID=? AND CATEGORY=?";
-        String[] whereArgs = new String[]{String.valueOf(authenID),category};
+        String[] whereArgs = new String[]{String.valueOf(authenID), category};
         int returnValue = db.update("CUSTOM_ENTRIES", values, where, whereArgs);
-        Log.e("updateReturnValue",returnValue+"");
+        Log.e("updateReturnValue", returnValue + "");
         return returnValue;
 
     }

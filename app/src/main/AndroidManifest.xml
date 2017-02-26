@@ -31,5 +31,17 @@
 
         </activity>
 
+        <activity android:name=".Activities.DetailedViewActivity">
+
+        </activity>
+
+        <activity android:name=".Activities.EditAuthenticationActivity">
+
+        </activity>
+
+        <activity android:name=".Activities.SendDataActivity">
+
+        </activity>
+
     </application>
 </manifest>

@@ -32,7 +32,7 @@ public class CustomImageListAdapter extends CursorAdapter {
 
         ImageView iconImage = (ImageView) view.findViewById(R.id.imageViewFloatingActivity);
         int icon = cursor.getInt(cursor.getColumnIndex("IMAGE_ID"));
-        Log.e("imageID",icon+"");
+        //Log.e("imageID",icon+"");
         iconImage.setImageResource(icon);
 
     }

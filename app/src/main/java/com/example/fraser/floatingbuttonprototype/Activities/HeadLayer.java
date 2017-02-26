@@ -23,7 +23,6 @@ public class HeadLayer extends View {
     private Context mContext;
     private FrameLayout mFrameLayout;
     private WindowManager mWindowManager;
-    private boolean shouldClick;
     private boolean openClose = false;
 
     public HeadLayer(Context context) {
@@ -58,7 +57,7 @@ public class HeadLayer extends View {
         //final ImageView imageView = (ImageView) mFrameLayout.findViewById(R.id.imageView);
         // add a click listener to the image view
         final ImageView imageView = (ImageView) mFrameLayout.findViewById(R.id.imageView);
-        
+
         // Support dragging the image view
         imageView.setOnTouchListener(new OnTouchListener() {
             private static final int MAX_CLICK_DURATION = 200;
@@ -83,13 +82,13 @@ public class HeadLayer extends View {
 
                         break;
                     }
+
                     case MotionEvent.ACTION_MOVE: {
 
                         params.x = initX + (x - initTouchX);
                         params.y = initY + (y - initTouchY);
                         mWindowManager.updateViewLayout(mFrameLayout, params);
                         return true;
-
                     }
 
                     case MotionEvent.ACTION_UP: {
@@ -106,7 +105,6 @@ public class HeadLayer extends View {
 
                                 openClose = true;
                             } else {
-
                                 FloatingActivity.act.finish();
                                 openClose = false;
                             }
