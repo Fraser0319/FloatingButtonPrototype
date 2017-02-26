@@ -17,30 +17,40 @@
         android:textSize="24sp" />
 
     <LinearLayout
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="25dp">
 
         <ListView
             android:id="@+id/targetListViewFloatingActivity"
             android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_height="150dp"
             android:layout_marginRight="40dp"
-            android:scrollbars="none" />
+            android:choiceMode="singleChoice"
+            android:listSelector="@drawable/list_view_selector"
+            android:background="#f4f5f7"
+            android:fadeScrollbars="false"/>
 
         <ListView
             android:id="@+id/authenListViewFloatingActivity"
             android:layout_width="50dp"
+            android:layout_height="150dp"
             android:layout_marginRight="40dp"
-            android:layout_height="50dp"
-            android:scrollbars="none" />
+            android:choiceMode="singleChoice"
+            android:listSelector="@drawable/list_view_selector"
+            android:background="#f4f5f7"
+            android:fadeScrollbars="false" />
 
         <ListView
             android:id="@+id/emoListViewFloatingActivity"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:scrollbars="none" />
+            android:layout_height="150dp"
+            android:choiceMode="singleChoice"
+            android:listSelector="@drawable/list_view_selector"
+            android:background="#f4f5f7"
+            android:fadeScrollbars="false" />
 
     </LinearLayout>
 
@@ -81,9 +91,12 @@
             android:hint="Comments" />
     </LinearLayout>
 
-    <Button
+
+    <android.support.design.widget.FloatingActionButton
+       android:layout_marginRight="15dp"
+        android:layout_gravity="right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="close"
-        android:text="close" />
+        android:src="@drawable/update"/>
 </LinearLayout>

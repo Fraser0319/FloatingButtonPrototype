@@ -17,10 +17,10 @@ import com.example.fraser.floatingbuttonprototype.R;
 
 public class CustomImageListAdapter extends CursorAdapter {
 
-
     public CustomImageListAdapter(Context context, Cursor c) {
         super(context, c, 0);
     }
+
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {

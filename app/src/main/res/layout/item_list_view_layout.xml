@@ -8,9 +8,8 @@
         android:id="@+id/imageViewFloatingActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="10dp"
-        />
+        android:layout_gravity="center"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp" />
 
 </LinearLayout>

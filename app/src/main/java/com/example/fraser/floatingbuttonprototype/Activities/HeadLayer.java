@@ -103,13 +103,11 @@ public class HeadLayer extends View {
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK); // clears activity to open the new small activity
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 getContext().startActivity(intent);
+
                                 openClose = true;
                             } else {
-//                                Intent intent = new Intent(getContext(),MainActivity.class);
-//                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK); // clears activity to open the main activity
-//                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                                getContext().startActivity(intent);
 
+                                FloatingActivity.act.finish();
                                 openClose = false;
                             }
                         }

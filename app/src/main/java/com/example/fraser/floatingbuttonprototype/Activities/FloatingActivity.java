@@ -6,8 +6,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.fraser.floatingbuttonprototype.Adapters.CustomImageListAdapter;
@@ -26,12 +28,20 @@ public class FloatingActivity extends AppCompatActivity {
     private static ListView emotionList;
     private static CustomImageListAdapter listAdapter;
     private SQLiteOpenHelper authenticationDatabase;
+    public static FloatingActivity act;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
+
         setUpDB();
+        setUpFloatingActvity();
+        getSelectedItem();
+        this.act = this;
+    }
+
+    public void setUpFloatingActvity() {
         Point size = new Point();
         WindowManager w = getWindowManager();
         w.getDefaultDisplay().getSize(size);
@@ -39,13 +49,18 @@ public class FloatingActivity extends AppCompatActivity {
         int measuredHeight = size.y;
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.x = 0;
-        params.height = measuredHeight - 600 ;
+        Log.e("mearsuredHight",measuredHeight+"");
+        if(measuredHeight <= 1776){
+            params.height = measuredHeight - 190;
+        } else {
+            params.height = measuredHeight - 500;
+        }
+
         params.width = measuredWidth - 100;
         params.y = -200;
         params.flags = WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS |
                 WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED;
         this.getWindow().setAttributes(params);
-
     }
 
 
@@ -54,7 +69,7 @@ public class FloatingActivity extends AppCompatActivity {
         db = authenticationDatabase.getReadableDatabase();
 
         String getImageIDFromCategory = "SELECT * FROM IMAGE_NAMES WHERE CATEGORY = ";
-        targetCursor = db.rawQuery(getImageIDFromCategory+"'Target'", null);
+        targetCursor = db.rawQuery(getImageIDFromCategory + "'Target'", null);
         authenticatorCursor = db.rawQuery(getImageIDFromCategory + "'Authenticator'", null);
         emotionCursor = db.rawQuery(getImageIDFromCategory + "'Emotion'", null);
 
@@ -62,12 +77,30 @@ public class FloatingActivity extends AppCompatActivity {
         authenticatorList = (ListView) findViewById(R.id.authenListViewFloatingActivity);
         emotionList = (ListView) findViewById(R.id.emoListViewFloatingActivity);
 
-        targetList.setAdapter(new CustomImageListAdapter(this,targetCursor));
-        authenticatorList.setAdapter(new CustomImageListAdapter(this,authenticatorCursor));
-        emotionList.setAdapter(new CustomImageListAdapter(this,emotionCursor));
+
+        targetList.setAdapter(new CustomImageListAdapter(getApplicationContext(), targetCursor));
+        authenticatorList.setAdapter(new CustomImageListAdapter(this, authenticatorCursor));
+        emotionList.setAdapter(new CustomImageListAdapter(this, emotionCursor));
     }
-    
-    public void close(View v){
+
+
+    public void getSelectedItem() {
+
+
+
+        targetList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.e("id", id + "");
+                //use id to get the image name,id etc from the db as its the _id of that image in the image_names table.
+                targetList.setSelection(position);
+            }
+        });
+
+
+    }
+
+    public void close(View v) {
         finish();
     }
 }
