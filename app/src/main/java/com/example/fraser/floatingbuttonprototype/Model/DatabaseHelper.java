@@ -88,7 +88,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         insertImageNames(db, R.drawable.door, "Door", "Target");
         insertImageNames(db, R.drawable.tablet, "Tablet", "Target");
         insertImageNames(db, R.drawable.metro, "Public Transport", "Target");
-        insertImageNames(db, R.drawable.ticket, "Ticket", "Target");
+
         insertImageNames(db, R.drawable.question_mark, "Other", "Target");
 
         insertImageNames(db, 0, "Authenticators", "Header");
@@ -100,6 +100,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         insertImageNames(db, R.drawable.key, "Key", "Authenticator");
         insertImageNames(db, R.drawable.mobile_phone, "Mobile Payment", "Authenticator");
         insertImageNames(db, R.drawable.password, "Password", "Authenticator");
+        insertImageNames(db, R.drawable.ticket, "Ticket", "Authenticator");
         insertImageNames(db, R.drawable.point_of_service, "Chip and Pin", "Authenticator");
         insertImageNames(db, R.drawable.question_mark, "Other", "Authenticator");
 

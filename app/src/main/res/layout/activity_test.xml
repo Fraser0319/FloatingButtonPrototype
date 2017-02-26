@@ -32,8 +32,7 @@
             android:background="#f4f5f7"
             android:choiceMode="singleChoice"
             android:fadeScrollbars="false"
-            android:listSelector="@drawable/list_view_selector"
-            android:scrollbars="horizontal" />
+            android:listSelector="@drawable/list_view_selector" />
 
         <ListView
             android:id="@+id/authenListViewFloatingActivity"
@@ -72,7 +71,7 @@
         <EditText
             android:id="@+id/locationEditText"
             android:layout_width="wrap_content"
-
+            android:backgroundTint="@color/colorAccent"
             android:layout_height="wrap_content"
             android:hint="Location"
             android:maxLines="1" />
@@ -96,6 +95,7 @@
             android:id="@+id/commentsEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorAccent"
             android:hint="Comments"
             android:maxLines="1" />
     </LinearLayout>
