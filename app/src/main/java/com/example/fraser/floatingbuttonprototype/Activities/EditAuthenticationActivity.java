@@ -62,7 +62,7 @@ public class EditAuthenticationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 editAuthenticationActivity.onBackPressed();
-                Intent backIntent = new Intent(getApplicationContext(),MainActivity.class);
+                Intent backIntent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(backIntent);
 
             }
@@ -94,6 +94,7 @@ public class EditAuthenticationActivity extends AppCompatActivity {
                             tarEdit.setVisibility(View.GONE);
                             targetTextView.setVisibility(View.VISIBLE);
                             targetTextView.setText(expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition));
+                            expandableListView.collapseGroup(groupPosition);
                             break;
 
                         case "Authenticator":
@@ -103,6 +104,7 @@ public class EditAuthenticationActivity extends AppCompatActivity {
                             authenEdit.setVisibility(View.GONE);
                             authenTextView.setVisibility(View.VISIBLE);
                             authenTextView.setText(expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition));
+                            expandableListView.collapseGroup(groupPosition);
                             break;
 
                         case "Emotion":
@@ -112,6 +114,7 @@ public class EditAuthenticationActivity extends AppCompatActivity {
                             emoEdit.setVisibility(View.GONE);
                             emotionTextView.setVisibility(View.VISIBLE);
                             emotionTextView.setText(expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition));
+                            expandableListView.collapseGroup(groupPosition);
                             break;
                     }
                 }

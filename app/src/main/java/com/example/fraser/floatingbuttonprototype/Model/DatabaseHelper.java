@@ -256,10 +256,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Map<String, List<String>> getExpandableListData(SQLiteDatabase db) {
 
         Map<String, List<String>> expandableListDataMap = new HashMap<>();
-        expandableListDataMap.put("Emotion", getIconsFromCategory(db, "Emotion"));
         expandableListDataMap.put("Target", getIconsFromCategory(db, "Target"));
         expandableListDataMap.put("Authenticator", getIconsFromCategory(db, "Authenticator"));
-
+        expandableListDataMap.put("Emotion", getIconsFromCategory(db, "Emotion"));
         return expandableListDataMap;
     }
 
