@@ -133,7 +133,7 @@ public class DetailedViewActivity extends AppCompatActivity {
 
         newBundle.putLong("id", id);
         newBundle.putInt("target", target);
-        newBundle.putInt("auhen", authen);
+        newBundle.putInt("authen", authen);
         newBundle.putInt("emotion", emo);
 
         return newBundle;
@@ -213,7 +213,7 @@ public class DetailedViewActivity extends AppCompatActivity {
         Bundle extras = intent.getBundleExtra("bundle");
         if (extras != null) {
             int device = extras.getInt("device");
-            int authen = extras.getInt("auhen");
+            int authen = extras.getInt("authen");
             int emotion = extras.getInt("emotion");
             String loc = extras.getString("location");
             String comms = extras.getString("comment");

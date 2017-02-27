@@ -209,7 +209,7 @@ public class EditAuthenticationActivity extends AppCompatActivity {
         if (extras != null) {
             id = extras.getLong("id");
             int dev = extras.getInt("target");
-            int authen = extras.getInt("auhen");
+            int authen = extras.getInt("authen");
             int emo = extras.getInt("emotion");
 
             ImageView devImage = (ImageView) findViewById(R.id.targetIconView);

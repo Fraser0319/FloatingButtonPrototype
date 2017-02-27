@@ -143,15 +143,15 @@ public class FloatingActivity extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 openEditActivity.putExtra("bundle", bundle);
                 bundle.putLong("id", id);
-                bundle.putInt("device", targetImageId);
-                bundle.putInt("auhen", authenImageId);
+                bundle.putInt("target", targetImageId);
+                bundle.putInt("authen", authenImageId);
                 bundle.putInt("emotion", emotionImageId);
                 openEditActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 this.startActivity(openEditActivity);
             }
 
             Toast.makeText(this, "Authentication Added !", Toast.LENGTH_SHORT).show();
-            finish();
+//            finish();
             cleanUp();
         } else {
             Toast.makeText(this, "Please set a Target, Authenticator and Emotion", Toast.LENGTH_SHORT).show();
