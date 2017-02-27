@@ -36,6 +36,9 @@ public class DetailedViewActivity extends AppCompatActivity {
     private ArrayAdapter arrayAdapter;
     private EditText location;
     private long id;
+    private int target;
+    private int authen;
+    private int emo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,18 +79,14 @@ public class DetailedViewActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.e("onReumeCalled", "here");
-
+    public void updateRecord() {
         String getUpdatedRecord = "SELECT * FROM AUTHENTICATION WHERE _id = " + id;
         Cursor cursor = db.rawQuery(getUpdatedRecord, null);
 
         if (cursor.moveToFirst()) {
-            int target = cursor.getInt(cursor.getColumnIndex("DEVICE_RESOURCE_ID"));
-            int authen = cursor.getInt(cursor.getColumnIndex("AUTHENTICATOR_RESOURCE_ID"));
-            int emo = cursor.getInt(cursor.getColumnIndex("EMOTION_RESOURCE_ID"));
+            target = cursor.getInt(cursor.getColumnIndex("DEVICE_RESOURCE_ID"));
+            authen = cursor.getInt(cursor.getColumnIndex("AUTHENTICATOR_RESOURCE_ID"));
+            emo = cursor.getInt(cursor.getColumnIndex("EMOTION_RESOURCE_ID"));
 
 
             ImageView deviceImage = (ImageView) findViewById(R.id.deviceDetailedImage);
@@ -122,21 +121,20 @@ public class DetailedViewActivity extends AppCompatActivity {
         }
     }
 
-    public Bundle sendBundle() {
-        Intent intent = getIntent();
-        Bundle extras = intent.getBundleExtra("bundle");
-        Bundle newBundle = new Bundle();
-        if (extras != null) {
-            long id = extras.getLong("id");
-            int device = extras.getInt("device");
-            int authen = extras.getInt("auhen");
-            int emotion = extras.getInt("emotion");
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e("onReumeCalled", "here");
+        updateRecord();
+    }
 
-            newBundle.putLong("id", id);
-            newBundle.putInt("device", device);
-            newBundle.putInt("auhen", authen);
-            newBundle.putInt("emotion", emotion);
-        }
+    public Bundle sendBundle() {
+        Bundle newBundle = new Bundle();
+
+        newBundle.putLong("id", id);
+        newBundle.putInt("target", target);
+        newBundle.putInt("auhen", authen);
+        newBundle.putInt("emotion", emo);
 
         return newBundle;
     }

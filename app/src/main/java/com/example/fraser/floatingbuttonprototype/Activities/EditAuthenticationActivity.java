@@ -205,7 +205,7 @@ public class EditAuthenticationActivity extends AppCompatActivity {
 
         if (extras != null) {
             id = extras.getLong("id");
-            int dev = extras.getInt("device");
+            int dev = extras.getInt("target");
             int authen = extras.getInt("auhen");
             int emo = extras.getInt("emotion");
 
