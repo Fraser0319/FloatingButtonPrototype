@@ -1,5 +1,6 @@
 package com.example.fraser.floatingbuttonprototype.Activities;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -31,9 +32,11 @@ public class FloatingActivity extends AppCompatActivity {
     private static CustomImageListAdapter listAdapter;
     private SQLiteOpenHelper authenticationDatabase;
     public static FloatingActivity act;
-    int targetImageId = -1;
-    int authenImageId = -1;
-    int emotionImageId = -1;
+    private int targetImageId = -1;
+    private int authenImageId = -1;
+    private int emotionImageId = -1;
+    private TextView locationText;
+    private TextView commentsText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,25 +127,45 @@ public class FloatingActivity extends AppCompatActivity {
 
     public void insertAuthentication(View v) {
 
-        TextView locationText = (TextView) findViewById(R.id.locationEditText);
-        TextView commentsText = (TextView) findViewById(R.id.commentsEditText);
+        locationText = (TextView) findViewById(R.id.locationEditText);
+        commentsText = (TextView) findViewById(R.id.commentsEditText);
 
         String location = locationText.getText().toString();
         String comments = commentsText.getText().toString();
 
+        dbHelper.insertAuthentication(db, targetImageId, authenImageId, emotionImageId, comments, location);
+
         if (targetImageId != -1 && authenImageId != -1 && emotionImageId != -1) {
-            dbHelper.insertAuthentication(db, targetImageId, authenImageId, emotionImageId, comments, location);
+
+            if (targetImageId == R.drawable.question_mark ||authenImageId == R.drawable.question_mark || emotionImageId == R.drawable.question_mark) {
+                Intent openEditActivity = new Intent(this, EditAuthenticationActivity.class);
+                Long id = dbHelper.getMaxID(db);
+                Bundle bundle = new Bundle();
+                openEditActivity.putExtra("bundle", bundle);
+                bundle.putLong("id", id);
+                bundle.putInt("device", targetImageId);
+                bundle.putInt("auhen", authenImageId);
+                bundle.putInt("emotion", emotionImageId);
+                openEditActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                this.startActivity(openEditActivity);
+            }
+
             Toast.makeText(this, "Authentication Added !", Toast.LENGTH_SHORT).show();
-            locationText.setText("");
-            commentsText.setText("");
-            emotionList.setAdapter(new CustomImageListAdapter(this, emotionCursor));
-            authenticatorList.setAdapter(new CustomImageListAdapter(this, authenticatorCursor));
-            targetList.setAdapter(new CustomImageListAdapter(this, targetCursor));
-            targetImageId = -1;
-            authenImageId = -1;
-            emotionImageId = -1;
+            finish();
+            cleanUp();
         } else {
             Toast.makeText(this, "Please set a Target, Authenticator and Emotion", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void cleanUp(){
+        locationText.setText("");
+        commentsText.setText("");
+        emotionList.setAdapter(new CustomImageListAdapter(this, emotionCursor));
+        authenticatorList.setAdapter(new CustomImageListAdapter(this, authenticatorCursor));
+        targetList.setAdapter(new CustomImageListAdapter(this, targetCursor));
+        targetImageId = -1;
+        authenImageId = -1;
+        emotionImageId = -1;
     }
 }

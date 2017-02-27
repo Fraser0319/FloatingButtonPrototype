@@ -11,12 +11,14 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.fraser.floatingbuttonprototype.Adapters.CustomPagerAdapter;
-import com.example.fraser.floatingbuttonprototype.Fragments.ListDBFragment;
 import com.example.fraser.floatingbuttonprototype.Fragments.ListIconsFragment;
 import com.example.fraser.floatingbuttonprototype.Fragments.SummaryFragment;
 import com.example.fraser.floatingbuttonprototype.Model.HeadService;
@@ -64,6 +66,24 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = mPermissionChecker.createRequiredPermissionIntent();
             startActivityForResult(intent, PermissionChecker.REQUIRED_PERMISSION_REQUEST_CODE);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_items, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.sendDataMenuItem) {
+            Intent sendDataIntent = new Intent(this, SendDataActivity.class);
+            sendDataIntent.putExtra("serviceState", serviceState);
+            startActivity(sendDataIntent);
+            Log.e("Menu Item Clicked", "send data clicked");
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public boolean getServiceState() {
@@ -126,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
     private void setUpPager(ViewPager viewPager) {
         CustomPagerAdapter cpa = new CustomPagerAdapter(getSupportFragmentManager());
         cpa.addFragment(new SummaryFragment(), "Summary");
-        cpa.addFragment(new ListDBFragment(), "ImageDB");
+        //cpa.addFragment(new ListDBFragment(), "ImageDB");
         cpa.addFragment(new ListIconsFragment(), "Icons");
         viewPager.setAdapter(cpa);
     }
