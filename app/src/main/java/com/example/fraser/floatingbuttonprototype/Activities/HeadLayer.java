@@ -37,15 +37,18 @@ public class HeadLayer extends View {
     }
 
     private void addToWindowManager() {
+
         final WindowManager.LayoutParams params = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.TYPE_PHONE,
-//                WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
+                WindowManager.LayoutParams.TYPE_SYSTEM_ERROR,
+//                WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL, this is the commented out one
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,// allows you to use the back button properly
                 PixelFormat.TRANSLUCENT);
-//        params.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED;
+      // params.flags = WindowManager.LayoutParams.TYPE_SYSTEM_ERROR | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED;
         params.gravity = Gravity.LEFT;
+
+
 
         mWindowManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
         mWindowManager.addView(mFrameLayout, params);
