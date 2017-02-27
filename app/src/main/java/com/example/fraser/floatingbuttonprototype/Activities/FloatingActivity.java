@@ -63,7 +63,7 @@ public class FloatingActivity extends AppCompatActivity {
         if (measuredHeight <= 1776) {
             params.height = measuredHeight - 190;
         } else {
-            params.height = measuredHeight - 500;
+            params.height = measuredHeight - 750;
         }
 
         params.width = measuredWidth - 100;

@@ -20,16 +20,16 @@ import com.example.fraser.floatingbuttonprototype.R;
 
 public class HeadLayer extends View {
 
-    private Context mContext;
-    private FrameLayout mFrameLayout;
-    private WindowManager mWindowManager;
+    private Context context;
+    private FrameLayout frameLayout;
+    private WindowManager windowManager;
     private boolean openClose = false;
 
-    public HeadLayer(Context context) {
-        super(context);
+    public HeadLayer(Context Context) {
+        super(Context);
 
-        mContext = context;
-        mFrameLayout = new FrameLayout(mContext);
+        context = Context;
+        frameLayout = new FrameLayout(context);
 
         addToWindowManager();
         //createOnTouchEvent();
@@ -50,16 +50,16 @@ public class HeadLayer extends View {
 
 
 
-        mWindowManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
-        mWindowManager.addView(mFrameLayout, params);
+        windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        windowManager.addView(frameLayout, params);
 
-        LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         // Here is the place where you can inject whatever layout you want.
-        layoutInflater.inflate(R.layout.head, mFrameLayout);
+        layoutInflater.inflate(R.layout.head, frameLayout);
         //final ImageView imageView = (ImageView) mFrameLayout.findViewById(R.id.imageView);
         // add a click listener to the image view
-        final ImageView imageView = (ImageView) mFrameLayout.findViewById(R.id.imageView);
+        final ImageView imageView = (ImageView) frameLayout.findViewById(R.id.imageView);
 
         // Support dragging the image view
         imageView.setOnTouchListener(new OnTouchListener() {
@@ -87,10 +87,9 @@ public class HeadLayer extends View {
                     }
 
                     case MotionEvent.ACTION_MOVE: {
-
                         params.x = initX + (x - initTouchX);
                         params.y = initY + (y - initTouchY);
-                        mWindowManager.updateViewLayout(mFrameLayout, params);
+                        windowManager.updateViewLayout(frameLayout, params);
                         return true;
                     }
 
@@ -99,7 +98,6 @@ public class HeadLayer extends View {
 
                         if (clickDuration < MAX_CLICK_DURATION) {
                             //click event has occurred
-
                             if (!openClose) {
                                 Intent intent = new Intent(getContext(), FloatingActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK); // clears activity to open the new small activity
@@ -123,7 +121,7 @@ public class HeadLayer extends View {
      * Removes the view from window manager.
      */
     public void destroy() {
-        mWindowManager.removeView(mFrameLayout);
+        windowManager.removeView(frameLayout);
     }
 }
 
