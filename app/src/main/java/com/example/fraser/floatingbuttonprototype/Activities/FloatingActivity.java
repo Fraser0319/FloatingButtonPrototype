@@ -82,6 +82,7 @@ public class FloatingActivity extends AppCompatActivity {
         String getImageIDFromCategoryTar = "SELECT _id, image_id, category FROM IMAGE_NAMES WHERE CATEGORY = " + "'Other'" + " OR " + "CATEGORY = " + "'Target'" + " and image_id in (select image_id from image_names where image_id != " + R.drawable.question_mark + ")";
         String getImageIDFromCategoryAut = "SELECT _id, image_id, category FROM IMAGE_NAMES WHERE CATEGORY = " + "'Other'" + " OR " + "CATEGORY = " + "'Authenticator'" + " and image_id in (select image_id from image_names where image_id != " + R.drawable.question_mark + ")";
         String getImageIDFromCategoryEmo = "SELECT _id, image_id, category FROM IMAGE_NAMES WHERE CATEGORY = " + "'Other'" + " OR " + "CATEGORY = " + "'Emotion'" + " and image_id in (select image_id from image_names where image_id != " + R.drawable.question_mark + ")";
+
         targetCursor = db.rawQuery(getImageIDFromCategoryTar, null);
         authenticatorCursor = db.rawQuery(getImageIDFromCategoryAut, null);
         emotionCursor = db.rawQuery(getImageIDFromCategoryEmo, null);
@@ -134,9 +135,11 @@ public class FloatingActivity extends AppCompatActivity {
         String location = locationText.getText().toString();
         String comments = commentsText.getText().toString();
 
-        dbHelper.insertAuthentication(db, targetImageId, authenImageId, emotionImageId, comments, location);
+
 
         if (targetImageId != -1 && authenImageId != -1 && emotionImageId != -1) {
+
+            dbHelper.insertAuthentication(db, targetImageId, authenImageId, emotionImageId, comments, location);
 
             if (targetImageId == R.drawable.question_mark ||authenImageId == R.drawable.question_mark || emotionImageId == R.drawable.question_mark) {
                 Intent openEditActivity = new Intent(this, EditAuthenticationActivity.class);

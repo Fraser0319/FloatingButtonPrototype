@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.fraser.floatingbuttonprototype.R;
 
@@ -63,30 +64,30 @@ public class CustomCursorAdaptor extends CursorAdapter {
             } else {
                 locationImage.setImageResource(R.drawable.location_empty);
             }
-        }else {
+        } else {
             locationImage.setImageResource(R.drawable.location_empty);
         }
-        Log.e("tagDev",device+"");
-        Log.e("tagAuthe",authentication+"");
-        Log.e("tagEmo",emotion+"");
+        Log.e("tagDev", device + "");
+        Log.e("tagAuthe", authentication + "");
+        Log.e("tagEmo", emotion + "");
 
-        if(device != -1 || authentication != -1 || emotion != -1 ) {
+        try {
             deviceImage.setImageResource(device);
             authenticationImage.setImageResource(authentication);
             emotionImage.setImageResource(emotion);
-        } else {
-//            Toast.makeText(context,"Cant set image resource id",Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(context, "Cant set image resource id", Toast.LENGTH_SHORT).show();
         }
 
-//            SQLiteOpenHelper authenticationDatabase = new DatabaseHelper(context);
-//            SQLiteDatabase db = authenticationDatabase.getReadableDatabase();
-//            DatabaseHelper dbHelper = new DatabaseHelper(context);
-//            ExportCSV eCSV = new ExportCSV(dbHelper.getAllAuthentications(db));
-//            eCSV.generateCSV(context);
-//            db.close();
 
-
-
+//
+//
+//        SQLiteOpenHelper authenticationDatabase = new DatabaseHelper(context);
+//        SQLiteDatabase db = authenticationDatabase.getReadableDatabase();
+//        DatabaseHelper dbHelper = new DatabaseHelper(context);
+//        ExportCSV eCSV = new ExportCSV(dbHelper.getAllAuthentications(db));
+//        eCSV.generateCSV(context);
+//        db.close();
 
 //        TextView dbID = (TextView) view.findViewById(R.id.dbID);
 //        String id = cursor.getString(cursor.getColumnIndex("_id"));
