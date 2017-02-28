@@ -69,9 +69,23 @@ public class CustomCursorAdaptor extends CursorAdapter {
         Log.e("tagDev",device+"");
         Log.e("tagAuthe",authentication+"");
         Log.e("tagEmo",emotion+"");
-        deviceImage.setImageResource(device);
-        authenticationImage.setImageResource(authentication);
-        emotionImage.setImageResource(emotion);
+
+        if(device != -1 || authentication != -1 || emotion != -1 ) {
+            deviceImage.setImageResource(device);
+            authenticationImage.setImageResource(authentication);
+            emotionImage.setImageResource(emotion);
+        } else {
+//            Toast.makeText(context,"Cant set image resource id",Toast.LENGTH_SHORT).show();
+        }
+
+//            SQLiteOpenHelper authenticationDatabase = new DatabaseHelper(context);
+//            SQLiteDatabase db = authenticationDatabase.getReadableDatabase();
+//            DatabaseHelper dbHelper = new DatabaseHelper(context);
+//            ExportCSV eCSV = new ExportCSV(dbHelper.getAllAuthentications(db));
+//            eCSV.generateCSV(context);
+//            db.close();
+
+
 
 
 //        TextView dbID = (TextView) view.findViewById(R.id.dbID);
