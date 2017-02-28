@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -48,7 +49,7 @@ public class SummaryFragment extends Fragment {
                              Bundle savedInstanceState) {
         viewInflator = inflater.inflate(R.layout.fragment_summary, container, false);
         setUpDB();
-        generateList(viewInflator);
+
         Log.e("onCreateCalled", "here");
         return viewInflator;
     }
@@ -58,12 +59,19 @@ public class SummaryFragment extends Fragment {
         db = authenticationDatabase.getReadableDatabase();
         String getAllAuthentications = "SELECT * FROM AUTHENTICATION ORDER BY _id DESC";
         cursor = db.rawQuery(getAllAuthentications, null);
-        listAdapter = new CustomCursorAdaptor(getActivity(), cursor);
-        authenList = (ListView) viewInflator.findViewById(R.id.authenList);
-        authenList.setAdapter(listAdapter);
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                listAdapter = new CustomCursorAdaptor(getActivity(), cursor);
+                authenList = (ListView) viewInflator.findViewById(R.id.authenList);
+                authenList.setAdapter(listAdapter);
+                listAdapter.notifyDataSetChanged();
+                generateList();
+            }
+        });
     }
 
-    public void generateList(View v) {
+    public void generateList() {
 
         try {
             authenList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -119,7 +127,6 @@ public class SummaryFragment extends Fragment {
         super.onResume();
         Log.e("onResumeCalled", "here");
         //setUpDB();
-       // listAdapter.notifyDataSetChanged();
     }
 
     @Override

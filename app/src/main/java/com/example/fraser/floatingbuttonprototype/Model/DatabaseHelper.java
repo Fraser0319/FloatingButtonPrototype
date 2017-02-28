@@ -78,7 +78,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         insertImageNames(db, 0, "Target Devices", "Header");
         insertImageNames(db, R.drawable.atm, "ATM", "Target");
-        insertImageNames(db, R.drawable.browser, "Browser", "Target");
+        insertImageNames(db, R.drawable.domain_registration, "Browser", "Target");
         insertImageNames(db, R.drawable.suv, "Car", "Target");
         insertImageNames(db, R.drawable.smartphone, "Smartphone", "Target");
         insertImageNames(db, R.drawable.laptop, "Laptop", "Target");
@@ -86,20 +86,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         insertImageNames(db, R.drawable.locker, "Locker", "Target");
         insertImageNames(db, R.drawable.door, "Door", "Target");
         insertImageNames(db, R.drawable.tablet, "Tablet", "Target");
+        insertImageNames(db, R.drawable.cycle, "Bike", "Target");
         insertImageNames(db, R.drawable.metro, "Public Transport", "Target");
 
         insertImageNames(db, 0, "Authenticators", "Header");
         insertImageNames(db, R.drawable.contract, "Signature", "Authenticator");
-        insertImageNames(db, R.drawable.cursor, "Arrow Click", "Authenticator");
+        insertImageNames(db, R.drawable.mouse_click, "Mouse Click", "Authenticator");
         insertImageNames(db, R.drawable.fingerprintscan, "Fingerprint", "Authenticator");
         insertImageNames(db, R.drawable.hand_gesture, "Hand Gesture", "Authenticator");
         insertImageNames(db, R.drawable.id_card, "ID Card", "Authenticator");
         insertImageNames(db, R.drawable.key, "Key", "Authenticator");
+        insertImageNames(db, R.drawable.dial, "Key Pad", "Authenticator");
         insertImageNames(db, R.drawable.mobile_phone, "Mobile Payment", "Authenticator");
         insertImageNames(db, R.drawable.password, "Password", "Authenticator");
         insertImageNames(db, R.drawable.ticket, "Ticket", "Authenticator");
+        insertImageNames(db, R.drawable.blank_card, "Card", "Authenticator");
         insertImageNames(db, R.drawable.point_of_service, "Chip and Pin", "Authenticator");
-
+        insertImageNames(db, R.drawable.two_step_32x32, "Two Factor Authentication", "Authenticator");
 
         insertImageNames(db, 0, "Other Items", "Header");
         insertImageNames(db, R.drawable.question_mark, "Other", "Other");

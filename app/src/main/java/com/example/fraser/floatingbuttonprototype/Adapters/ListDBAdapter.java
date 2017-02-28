@@ -29,6 +29,12 @@ public class ListDBAdapter extends CursorAdapter {
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
 
+//        TextView imageID = (TextView) view.findViewById(R.id.imageID);
+//        TextView imageName = (TextView) view.findViewById(R.id.imageName);
+//        TextView cat = (TextView) view.findViewById(R.id.imageCategory);
+//        //TextView authenID = (TextView) view.findViewById(R.id.imageAuthenID);
+//        TextView _idTex = (TextView) view.findViewById(R.id.imageTableID);
+
         TextView imageID = (TextView) view.findViewById(R.id.imageID);
         TextView imageName = (TextView) view.findViewById(R.id.imageName);
         TextView cat = (TextView) view.findViewById(R.id.imageCategory);
@@ -36,15 +42,20 @@ public class ListDBAdapter extends CursorAdapter {
         TextView _idTex = (TextView) view.findViewById(R.id.imageTableID);
 
         long _id = cursor.getLong(cursor.getColumnIndex("_id"));
-        int icon = cursor.getInt(cursor.getColumnIndex("IMAGE_ID"));
-        String name = cursor.getString(cursor.getColumnIndex("NAME"));
-        String category = cursor.getString(cursor.getColumnIndex("CATEGORY"));
+//        int icon = cursor.getInt(cursor.getColumnIndex("IMAGE_ID"));
+//        String name = cursor.getString(cursor.getColumnIndex("NAME"));
+//        String category = cursor.getString(cursor.getColumnIndex("CATEGORY"));
+        int device = cursor.getInt(cursor.getColumnIndex("DEVICE_RESOURCE_ID"));
+        int authentication = cursor.getInt(cursor.getColumnIndex("AUTHENTICATOR_RESOURCE_ID"));
+        int emotion = cursor.getInt(cursor.getColumnIndex("EMOTION_RESOURCE_ID"));
+        String comment = cursor.getString(cursor.getColumnIndex("COMMENTS"));
+        String location = cursor.getString(cursor.getColumnIndex("LOCATION"));
         //int authenIDtex = cursor.getInt(cursor.getColumnIndex("AUTHEN_ID"));
 
 
-        imageID.setText("Image_ID: "+icon+"");
-        imageName.setText("Name: "+name);
-        cat.setText("CATEGORY: "+category);
+        imageID.setText("Device: "+device+"");
+        imageName.setText("Authenticator: "+authentication);
+        cat.setText("Emotion: "+emotion);
         //authenID.setText("AUTHEN_ID: "+authenIDtex+"");
         _idTex.setText("_id: "+_id+"");
     }

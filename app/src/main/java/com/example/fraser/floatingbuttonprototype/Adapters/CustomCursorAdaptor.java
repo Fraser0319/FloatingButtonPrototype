@@ -2,6 +2,7 @@ package com.example.fraser.floatingbuttonprototype.Adapters;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,7 +66,9 @@ public class CustomCursorAdaptor extends CursorAdapter {
         }else {
             locationImage.setImageResource(R.drawable.location_empty);
         }
-
+        Log.e("tagDev",device+"");
+        Log.e("tagAuthe",authentication+"");
+        Log.e("tagEmo",emotion+"");
         deviceImage.setImageResource(device);
         authenticationImage.setImageResource(authentication);
         emotionImage.setImageResource(emotion);

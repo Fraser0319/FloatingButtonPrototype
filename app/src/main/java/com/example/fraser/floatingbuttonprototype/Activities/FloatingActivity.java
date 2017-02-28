@@ -91,8 +91,9 @@ public class FloatingActivity extends AppCompatActivity {
         emotionList = (ListView) findViewById(R.id.emoListViewFloatingActivity);
 
         targetList.setAdapter(new CustomImageListAdapter(getApplicationContext(), targetCursor));
-        authenticatorList.setAdapter(new CustomImageListAdapter(this, authenticatorCursor));
-        emotionList.setAdapter(new CustomImageListAdapter(this, emotionCursor));
+        authenticatorList.setAdapter(new CustomImageListAdapter(getApplicationContext(), authenticatorCursor));
+        emotionList.setAdapter(new CustomImageListAdapter(getApplicationContext(), emotionCursor));
+
     }
 
 
