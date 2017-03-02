@@ -220,7 +220,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = db.rawQuery(getImageNameQuery, null);
         if (c.moveToFirst()) {
             name = c.getString(c.getColumnIndex("NAME"));
-            Log.e("getImageName: ", name);
+           // Log.e("getImageName: ", name);
         }
         c.close();
         return name;

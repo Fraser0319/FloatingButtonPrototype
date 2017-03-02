@@ -26,8 +26,13 @@ public class ExportCSV {
     public File generateCSV(Context context) {
         File file = null;
         try {
-            file = new File("/sdcard/testCSV.csv");
-            Log.e("path", context.getFilesDir().getPath().toString() + "/testCSV.csv");
+            file = new File("/sdcard/AuthenticationDiary/testCSV.csv");
+            File fileDir = new File("/sdcard/AuthenticationDiary/");
+            if(!fileDir.exists()){
+                fileDir.mkdirs();
+                Log.e("fileExists","False");
+            }
+            Log.e("fileExists","true");
             CSVWriter writer = new CSVWriter(new FileWriter(file));
             String [] header = new String[]{"_id","Target","Authenticator","Emotion","Timestamp","Location","Comments"};
             writer.writeNext(header);
