@@ -12,6 +12,7 @@ import com.example.fraser.floatingbuttonprototype.R;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -261,9 +262,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.update(TABLE_NAME, values, where, whereArgs);
     }
 
-    public Map<String, List<String>> getExpandableListData(SQLiteDatabase db) {
+    public LinkedHashMap<String, List<String>> getExpandableListData(SQLiteDatabase db) {
 
-        Map<String, List<String>> expandableListDataMap = new HashMap<>();
+        LinkedHashMap<String, List<String>> expandableListDataMap = new LinkedHashMap<>();
         expandableListDataMap.put("Target", getIconsFromCategory(db, "Target"));
         expandableListDataMap.put("Authenticator", getIconsFromCategory(db, "Authenticator"));
         expandableListDataMap.put("Emotion", getIconsFromCategory(db, "Emotion"));

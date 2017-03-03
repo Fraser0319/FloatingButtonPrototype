@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.fraser.floatingbuttonprototype.R;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,10 +24,10 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
 
     private Context context;
     private List<String> listTitle;
-    private Map<String, List<String>> listDetail;
+    private LinkedHashMap<String, List<String>> listDetail;
 
 
-    public CustomExpandableListAdapter(Context context, List<String> listTitle, Map<String, List<String>> listDetail) {
+    public CustomExpandableListAdapter(Context context, List<String> listTitle, LinkedHashMap<String, List<String>> listDetail) {
         this.context = context;
         this.listTitle = listTitle;
         this.listDetail = listDetail;
