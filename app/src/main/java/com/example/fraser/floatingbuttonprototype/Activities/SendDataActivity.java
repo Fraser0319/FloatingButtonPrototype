@@ -101,7 +101,6 @@ public class SendDataActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                setUpWebView();
                 openCSVFile();
-                Log.e("click on doc","here");
             }
         });
     }

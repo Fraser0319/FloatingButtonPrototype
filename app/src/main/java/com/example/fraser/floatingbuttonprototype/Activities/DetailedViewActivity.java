@@ -167,7 +167,6 @@ public class DetailedViewActivity extends AppCompatActivity {
 
     public void addLocation(String inputLocation) {
         arrayAdapter.add(inputLocation);
-        //spinner.setAdapter(arrayAdapter);
         arrayAdapter.notifyDataSetChanged();
         spinner.setSelection(arrayAdapter.getPosition(inputLocation));
     }

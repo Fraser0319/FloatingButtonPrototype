@@ -63,6 +63,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "NAME TEXT," +
                 "CATEGORY TEXT);");
 
+
+        populateImageDB(db);
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS CUSTOM_ENTRIES ( _id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "NAME TEXT," +
+                "CATEGORY TEXT," +
+                "AUTHEN_ID INTEGER);");
+    }
+
+    public long getMaxID(SQLiteDatabase db) {
+        String getMaxID = "SELECT MAX(_id) FROM AUTHENTICATION";
+        Cursor c = db.rawQuery(getMaxID, null);
+        Long id = null;
+        if (c.moveToFirst()) {
+            id = c.getLong(0);
+        }
+        c.close();
+        return id;
+    }
+
+    public void populateImageDB(SQLiteDatabase db) {
         insertImageNames(db, 0, "Icons", "Header");
         insertImageNames(db, R.drawable.play_32, "Start Notification", "Button");
         insertImageNames(db, R.drawable.stop_32, "End Notification", "Button");
@@ -106,22 +127,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         insertImageNames(db, 0, "Other Items", "Header");
         insertImageNames(db, R.drawable.question_mark, "Other", "Other");
-
-        db.execSQL("CREATE TABLE IF NOT EXISTS CUSTOM_ENTRIES ( _id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "NAME TEXT," +
-                "CATEGORY TEXT," +
-                "AUTHEN_ID INTEGER);");
-    }
-
-    public long getMaxID(SQLiteDatabase db) {
-        String getMaxID = "SELECT MAX(_id) FROM AUTHENTICATION";
-        Cursor c = db.rawQuery(getMaxID, null);
-        Long id = null;
-        if (c.moveToFirst()) {
-            id = c.getLong(0);
-        }
-        c.close();
-        return id;
     }
 
     public static void insertAuthentication(SQLiteDatabase db, int deviceID, int authenID, int emotionID, String comments, String location) {
@@ -220,7 +225,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = db.rawQuery(getImageNameQuery, null);
         if (c.moveToFirst()) {
             name = c.getString(c.getColumnIndex("NAME"));
-           // Log.e("getImageName: ", name);
+
         }
         c.close();
         return name;

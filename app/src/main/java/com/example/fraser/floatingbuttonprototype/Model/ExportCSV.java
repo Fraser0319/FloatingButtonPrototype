@@ -1,6 +1,7 @@
 package com.example.fraser.floatingbuttonprototype.Model;
 
 import android.content.Context;
+import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -26,8 +27,8 @@ public class ExportCSV {
     public File generateCSV(Context context) {
         File file = null;
         try {
-            file = new File("/sdcard/AuthenticationDiary/testCSV.csv");
-            File fileDir = new File("/sdcard/AuthenticationDiary/");
+            file = new File(Environment.getExternalStorageDirectory().getPath()+"/AuthenticationDiary/Floating/floatingButtonPrototypeData.csv");
+            File fileDir = new File(Environment.getExternalStorageDirectory().getPath()+"/AuthenticationDiary/Floating");
             if(!fileDir.exists()){
                 fileDir.mkdirs();
                 Log.e("fileExists","False");

@@ -64,7 +64,7 @@ public class HeadService extends Service {
         return new Notification.Builder(this)
                 .setContentTitle(getText(R.string.notificationTitle))
                 .setContentText(getText(R.string.notificationText))
-                .setSmallIcon(R.drawable.diary)
+                .setSmallIcon(R.drawable.padlock)
                 .setContentIntent(intent)
                 .build();
     }
