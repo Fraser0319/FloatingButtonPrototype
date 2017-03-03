@@ -42,7 +42,7 @@
 
             <ImageView
                 android:id="@+id/targetIconView"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp" />
@@ -55,7 +55,7 @@
 
             <EditText
                 android:id="@+id/addOtherTarget"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="invisible"/>
 
@@ -82,7 +82,7 @@
 
             <EditText
                 android:id="@+id/addOtherAuthen"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="invisible"/>
 
@@ -109,7 +109,7 @@
 
             <EditText
                 android:id="@+id/addOtherEmo"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="invisible"/>
 
