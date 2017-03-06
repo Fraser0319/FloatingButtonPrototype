@@ -1,5 +1,6 @@
 package com.example.fraser.floatingbuttonprototype.Activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,8 +9,10 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -49,6 +52,13 @@ public class FloatingActivity extends AppCompatActivity {
         this.act = this;
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Context.
+                INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        return true;
+    }
 
     public void setUpFloatingActvity() {
         Point size = new Point();
@@ -61,7 +71,7 @@ public class FloatingActivity extends AppCompatActivity {
 
         // for managing small screen sizes
         if (measuredHeight <= 1776) {
-            params.height = measuredHeight - 190;
+            params.height = measuredHeight - 250;
         } else {
             params.height = measuredHeight - 750;
         }

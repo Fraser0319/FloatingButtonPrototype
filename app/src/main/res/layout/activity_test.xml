@@ -65,6 +65,7 @@
             android:backgroundTint="@color/colorAccent"
             android:layout_height="wrap_content"
             android:hint="Location"
+            android:maxLength="20"
             android:maxLines="1" />
 
     </LinearLayout>
@@ -88,7 +89,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorAccent"
             android:hint="Comments"
-            android:maxLines="1" />
+            android:maxLines="2" />
     </LinearLayout>
 
     <LinearLayout
