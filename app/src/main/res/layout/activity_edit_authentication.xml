@@ -57,6 +57,7 @@
                 android:id="@+id/addOtherTarget"
                 android:layout_width="200dp"
                 android:maxLength="20"
+                android:maxLines="1"
                 android:layout_height="wrap_content"
                 android:visibility="invisible"/>
 
@@ -85,6 +86,7 @@
                 android:id="@+id/addOtherAuthen"
                 android:layout_width="200dp"
                 android:maxLength="20"
+                android:maxLines="1"
                 android:layout_height="wrap_content"
                 android:visibility="invisible"/>
 
@@ -113,6 +115,7 @@
                 android:id="@+id/addOtherEmo"
                 android:layout_width="200dp"
                 android:maxLength="20"
+                android:maxLines="1"
                 android:layout_height="wrap_content"
                 android:visibility="invisible"/>
 
