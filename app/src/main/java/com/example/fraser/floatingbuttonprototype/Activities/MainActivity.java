@@ -16,7 +16,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.example.fraser.floatingbuttonprototype.Adapters.CustomPagerAdapter;
 import com.example.fraser.floatingbuttonprototype.Fragments.ListIconsFragment;
@@ -126,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         getServiceState();
         Intent intent = new Intent(getApplicationContext(), HeadService.class);
         stopService(intent);
-        Toast.makeText(getApplicationContext(), "service stopped", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "service stopped", Toast.LENGTH_LONG).show();
     }
 
 
