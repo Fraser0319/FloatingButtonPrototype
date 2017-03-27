@@ -11,13 +11,17 @@ import com.example.fraser.floatingbuttonprototype.Activities.MainActivity;
 import com.example.fraser.floatingbuttonprototype.Activities.HeadLayer;
 import com.example.fraser.floatingbuttonprototype.R;
 
+
 /**
- * Created by Fraser on 01/12/2016.
+ *
+ * class makes use of code from this tutorial
+ *
+ * — example of a simple use of a window head
+ * https://codingshark.wordpress.com/2015/02/01/how-to-draw-on-top-of-other-applications/?utm_source=androiddevdigest
+ * https://github.com/mollyIV/ChatHeads
  */
 
 public class HeadService extends Service {
-    private final static int FOREGROUND_ID = 999;
-
     private HeadLayer mHeadLayer;
 
     @Override
@@ -34,7 +38,7 @@ public class HeadService extends Service {
         PendingIntent pendingIntent = createPendingIntent();
         Notification notification = createNotification(pendingIntent);
 
-        startForeground(FOREGROUND_ID, notification);
+        startForeground(111,notification);
 
         return START_STICKY;
     }

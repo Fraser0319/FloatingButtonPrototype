@@ -13,9 +13,13 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.example.fraser.floatingbuttonprototype.R;
-
 /**
- * Created by Fraser on 01/12/2016.
+ *
+ * class makes use of code from this tutorial
+ *
+ * — example of a simple use of a window head
+ * https://codingshark.wordpress.com/2015/02/01/how-to-draw-on-top-of-other-applications/?utm_source=androiddevdigest
+ * https://github.com/mollyIV/ChatHeads
  */
 
 public class HeadLayer extends View {
@@ -58,10 +62,9 @@ public class HeadLayer extends View {
         // Here is the place where you can inject whatever layout you want.
         layoutInflater.inflate(R.layout.head, frameLayout);
         //final ImageView imageView = (ImageView) mFrameLayout.findViewById(R.id.imageView);
+
         // add a click listener to the image view
         final ImageView imageView = (ImageView) frameLayout.findViewById(R.id.imageView);
-
-        // Support dragging the image view
         imageView.setOnTouchListener(new OnTouchListener() {
             private static final int MAX_CLICK_DURATION = 200;
             private long startClickTime;
@@ -82,7 +85,6 @@ public class HeadLayer extends View {
                         initY = params.y;
                         initTouchX = x;
                         initTouchY = y;
-
                         break;
                     }
 

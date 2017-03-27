@@ -29,8 +29,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
- * expandable list code and listeners based on
- * based on http://www.journaldev.com/9942/android-expandablelistview-example-tutorial
+ * expandable list code built upon from
+ * http://www.journaldev.com/9942/android-expandablelistview-example-tutorial
  */
 
 public class EditAuthenticationActivity extends AppCompatActivity {

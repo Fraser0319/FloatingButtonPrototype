@@ -46,6 +46,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    /**
+     * Part of the activity lifecycle which is the first method called when the activity is strated.
+     * here we set up the listeners for all the buttons on the actvity and set up the all the tabs.
+     * along with that we get the toggled state of the play and stop button. this is very important
+     * if the user has closed the app so the buttons know what state to be in, depending on whether
+     * the notifiation service is running or not.
+     *
+     * @param savedInstanceState
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +84,14 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+
+    /**
+     * This method takes whatever menu item has been selected and starts an intent to move to the
+     * send data activity.
+     * @param item
+     * @return
+     */
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -84,6 +103,13 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    /**
+     * This method is used for setting the toggle of the play and stop buttons, depending on whether
+     * the notification service is running or not.
+     *
+     * @return
+     */
 
     public boolean getServiceState() {
         SharedPreferences sharedPrefs = getSharedPreferences("com.example.fraser.floatingbuttonprototype", MODE_PRIVATE);
@@ -128,6 +154,10 @@ public class MainActivity extends AppCompatActivity {
         //Toast.makeText(getApplicationContext(), "service stopped", Toast.LENGTH_LONG).show();
     }
 
+    /**
+     * method for setting up the tabs on the toolbar. this simple adds the tabs and toolbar to the
+     * top of the activity.
+     */
 
     private void setUpTabs() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -142,6 +172,14 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
     }
 
+    /**
+     * the viewpager is passed in which, then uses a custom pager adapter in order to add a fragment
+     * to a tab in the screen. this quite a flexable method which allows easy addtions of new tabs.
+     *
+     * method based on tutorial : http://www.androidhive.info/2015/09/android-material-design-working-with-tabs/
+     * @param viewPager
+     */
+
     private void setUpPager(ViewPager viewPager) {
         CustomPagerAdapter cpa = new CustomPagerAdapter(getSupportFragmentManager());
         cpa.addFragment(new SummaryFragment(), "Summary");
@@ -149,6 +187,18 @@ public class MainActivity extends AppCompatActivity {
         cpa.addFragment(new ListIconsFragment(), "Icons");
         viewPager.setAdapter(cpa);
     }
+
+    /**
+     * Permission method
+     *
+     * From android 6.0 in order to gain access to the read and write permissions for operations
+     * to main storge of the device, android added this new way of prompting the user to accept
+     * allow these permissions before using the application. if they do not allow this, the feature
+     * that needs this permission will not be functional.
+     *
+     * solution found here: http://stackoverflow.com/a/37038313
+     * @param activity
+     */
 
     //persmission method.
     public static void verifyStoragePermissions(Activity activity) {

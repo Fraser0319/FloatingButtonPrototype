@@ -2,7 +2,6 @@ package com.example.fraser.floatingbuttonprototype.Adapters;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,9 +66,6 @@ public class CustomCursorAdaptor extends CursorAdapter {
         } else {
             locationImage.setImageResource(R.drawable.location_empty);
         }
-        Log.e("tagDev", device + "");
-        Log.e("tagAuthe", authentication + "");
-        Log.e("tagEmo", emotion + "");
 
         try {
             deviceImage.setImageResource(device);
@@ -78,20 +74,6 @@ public class CustomCursorAdaptor extends CursorAdapter {
         } catch (Exception e) {
             Toast.makeText(context, "Cant set image resource id", Toast.LENGTH_SHORT).show();
         }
-
-
-//
-//
-//        SQLiteOpenHelper authenticationDatabase = new DatabaseHelper(context);
-//        SQLiteDatabase db = authenticationDatabase.getReadableDatabase();
-//        DatabaseHelper dbHelper = new DatabaseHelper(context);
-//        ExportCSV eCSV = new ExportCSV(dbHelper.getAllAuthentications(db));
-//        eCSV.generateCSV(context);
-//        db.close();
-
-//        TextView dbID = (TextView) view.findViewById(R.id.dbID);
-//        String id = cursor.getString(cursor.getColumnIndex("_id"));
-//        dbID.setText(id);
 
         TextView timeStamp = (TextView) view.findViewById(R.id.timeStamp);
         String dateTime = cursor.getString(cursor.getColumnIndex("ADDED_ON"));

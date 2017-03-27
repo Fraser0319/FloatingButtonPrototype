@@ -8,7 +8,12 @@ import android.os.Build;
 import android.provider.Settings;
 
 /**
- * Created by Fraser on 01/12/2016.
+ *
+ * class makes use of code from this tutorial
+ *
+ * — example of a simple use of a window head
+ * https://codingshark.wordpress.com/2015/02/01/how-to-draw-on-top-of-other-applications/?utm_source=androiddevdigest
+ * https://github.com/mollyIV/ChatHeads
  */
 
 public class PermissionChecker {
